@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Library</title>
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <button id="new-book">New Book</button>
-        <div id="library"></div>
-        <div class="modal">
-            <div class="modal-dialog">
-                <p>I am modal</p>
-            </div>
+
+<head>
+    <meta charset="utf-8">
+    <title>Library</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <button id="new-book">New Book</button>
+    <div id="library"></div>
+    <div class="modal">
+        <div class="modal-dialog">
+            <form>
+                <div>
+                    <label class="form-label" for="book-title">Title</label>
+                    <input id="book-title" class="form-control" type="text">
+                </div>
+                <div>
+                    <label class="form-label" for="book-author">Author</label>
+                    <input id="book-author" class="form-control" type="text">
+                </div>
+                <div>
+                    <label class="form-label" for="book-pages">Pages</label>
+                    <input id="book-pages" class="form-control" type="number">
+                </div>
+                <div>
+                    <input id="book-read" type="checkbox">
+                    <label class="form-label" for="book-read">Read</label>
+                </div>
+                <button type="button">Add Book</button>
+            </form>
         </div>
-        <script src="js/main.js" async defer></script>
-    </body>
+    </div>
+    <script src="js/main.js" async defer></script>
+</body>
+
 </html>
