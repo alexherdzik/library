@@ -1,12 +1,18 @@
-const myLibrary = [1,2];
+const myLibrary = [];
 const libraryDisplay = document.getElementById('library');
 const newBookBtn = document.getElementById('new-book');
+const addBookBtn = document.getElementById('add-book');
 const modal = document.querySelector('.modal');
 const openClass = 'open';
 
-/* Modal button */
 newBookBtn.addEventListener('click', () => {
     document.querySelector('.modal').classList.add(openClass);
+});
+
+addBookBtn.addEventListener('click', () => {
+    addBookToLibrary();
+    clearLibraryDisplay();
+    displayBooksInLibrary();
 });
 
 modal.addEventListener('click', event => {
@@ -23,18 +29,27 @@ document.addEventListener('keydown', event => {
 
 displayBooksInLibrary();
 
-function Book() {
-
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
 }
 
 function addBookToLibrary() {
-
+    myLibrary.push(new Book('dummy title'));
 }
 
 function displayBooksInLibrary() {
     myLibrary.forEach(book => {
         const p = document.createElement('p');
-        p.textContent = book;
+        p.textContent = book.title;
         libraryDisplay.appendChild(p);
     })
+}
+
+function clearLibraryDisplay() {
+    while (libraryDisplay.firstChild) {
+        libraryDisplay.removeChild(libraryDisplay.lastChild);
+    }
 }
