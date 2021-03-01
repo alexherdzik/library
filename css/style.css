@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+#library {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 .card {
   display: flex;
   flex-direction: column;
