@@ -45,14 +45,10 @@ function addBookToLibrary() {
 }
 
 function displayBooksInLibrary() {
-    myLibrary.forEach(book => {
-        const bookElement = createBookElement(book);
+    myLibrary.forEach((book, i) => {
+        const bookElement = createBookElement(book, i);
         libraryDisplay.appendChild(bookElement);
     })
-}
-
-function displayNewBookInLibrary() {
-
 }
 
 function clearLibraryDisplay() {
@@ -61,15 +57,31 @@ function clearLibraryDisplay() {
     }
 }
 
-function createBookElement(book) {
+function createBookElement(book, i) {
     const card = document.createElement('div');
+    card.setAttribute('id', i);
     const cardBody = document.createElement('div');
     const title = document.createElement('p');
     const author = document.createElement('p');
     const pages = document.createElement('p');
     const read = document.createElement('p');
     const removeBtn = document.createElement('button');
+    removeBtn.addEventListener('click', (e) => {
+        const id = e.target.parentNode.parentNode.id;
+        myLibrary.splice(id, 1);
+        clearLibraryDisplay();
+        displayBooksInLibrary();
+    });
     removeBtn.textContent = 'Remove';
+
+    const readBtn = document.createElement('button');
+    readBtn.addEventListener('click', (e) => {
+        const id = e.target.parentNode.parentNode.id;
+        myLibrary[id].read = !myLibrary[id].read;
+        clearLibraryDisplay();
+        displayBooksInLibrary();
+    });
+    readBtn.textContent = "Read";
 
     title.textContent = book.title;
     author.textContent = book.author;
@@ -85,6 +97,7 @@ function createBookElement(book) {
     cardBody.appendChild(pages);
     cardBody.appendChild(read);
     cardBody.appendChild(removeBtn);
+    cardBody.appendChild(readBtn);
 
     card.appendChild(cardBody);
 
